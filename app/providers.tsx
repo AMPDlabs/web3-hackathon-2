@@ -6,7 +6,6 @@ import { OnchainKitProvider } from "@coinbase/onchainkit";
 import { RainbowKitProvider, connectorsForWallets, getDefaultConfig } from "@rainbow-me/rainbowkit";
 import { metaMaskWallet, rainbowWallet, coinbaseWallet } from "@rainbow-me/rainbowkit/wallets";
 import { useTheme } from "next-themes";
-import Image from "next/image";
 import { baseSepolia } from "wagmi/chains";
 import "@coinbase/onchainkit/styles.css";
 import "@rainbow-me/rainbowkit/styles.css";
