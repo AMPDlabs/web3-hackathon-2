@@ -11,6 +11,9 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/comp
 import CreateMatchTransaction from "@/components/createMatchTransaction";
 import JoinMatchTransaction from "@/components/joinMatchTransaction";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import { WalletComponents } from "@/components/walletComponents";
+import { ModeToggle } from "@/components/modeToggle";
 
 export default function Home() {
   const [resetKey, setResetKey] = useState(0);
@@ -82,34 +85,48 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen dark:bg-gradient-to-r dark:from-black dark:via-indigo-900 dark:to-black bg-gradient-to-b from-stone-50 to-rose-50">
-      <div className="flex flex-col items-center">
-        <h1 className="mt-24 lg:text-4xl sm:text-3xl text-lg">
-          Welcome to <b className="lg:text-4xl sm:text-3xl text-xl uppercase">Hackathon-2</b>
-        </h1>
-        <div className="max-w-4xl text-center opacity-80 pl-8 pr-8 pt-2 sm:text-xl text-s">
-          This NextJs template is setup to use <a href="https://ui.shadcn.com/">⚫️ shadcn/ui</a>, <a href="https://github.com/rainbow-me/rainbowkit">🌈 RainbowKit</a>, <a href="https://onchainkit.xyz/">🔵 OnchainKit</a> and <a href="https://wagmi.sh/">🟣🩵 wagmi.sh</a>. It also comes equipped with a
-          light and dark mode toggle setup ☀️🌕 and read/write integration with smart contract, enjoy 🤝.
+    <div>
+      <div className="fixed top-0 left-0 right-0 p-4 flex justify-between text-sm top-0 z-50 w-full border-b dark:border-none dark:bg-white/5 backdrop-blur-sm">
+        <div className="text-2xl flex justify-center items-center">
+          <Image className="mr-2" src="/logo.png" width={32} height={32} alt="AMPD Labs logo" />
+          <span className="text-base">AMPDLabs</span>
         </div>
-        <div className="max-w-4xl text-center opacity-80 pl-8 pr-8 pt-10 sm:text-xl text-s">
-          <Badge>TODO 1.</Badge> Connect smart contract address + abi.
-          <br />
-          Open <strong>todo.md</strong> for details.
-        </div>
-        <div className="mt-12">
-          <Badge>{"TODO 2."}</Badge> matches have been played so far.
-          <div className="flex items-center justify-center mt-2">
-            <CreateMatchTransaction key={resetKey} handleOnStatus={createMatchStatusUpdate} />
-          </div>
-        </div>
-        <div className="mt-8">
-          <div className="mb-32 justify-center items-center text-center flex flex-wrap">
-            {isLoading && <p>Loading matches...</p>}
-            {isError && <p>Error loading matches.</p>}
-            {getMatchList()}
+        <div className="flex justify-end">
+          <WalletComponents />
+          <div className="ml-2">
+            <ModeToggle />
           </div>
         </div>
       </div>
-    </main>
+      <main className="min-h-screen dark:bg-gradient-to-r dark:from-black dark:via-indigo-900 dark:to-black bg-gradient-to-b from-stone-50 to-rose-50">
+        <div className="flex flex-col items-center">
+          <h1 className="mt-24 lg:text-4xl sm:text-3xl text-lg">
+            Welcome to <b className="lg:text-4xl sm:text-3xl text-xl uppercase">Hackathon-2</b>
+          </h1>
+          <div className="max-w-4xl text-center opacity-80 pl-8 pr-8 pt-2 sm:text-xl text-s">
+            This NextJs template is setup to use <a href="https://ui.shadcn.com/">⚫️ shadcn/ui</a>, <a href="https://github.com/rainbow-me/rainbowkit">🌈 RainbowKit</a>, <a href="https://onchainkit.xyz/">🔵 OnchainKit</a> and <a href="https://wagmi.sh/">🟣🩵 wagmi.sh</a>. It also comes equipped with
+            a light and dark mode toggle setup ☀️🌕 and read/write integration with smart contract, enjoy 🤝.
+          </div>
+          <div className="max-w-4xl text-center opacity-80 pl-8 pr-8 pt-10 sm:text-xl text-s">
+            <Badge>TODO 1.</Badge> Connect smart contract address + abi.
+            <br />
+            Open <strong>todo.md</strong> for details.
+          </div>
+          <div className="mt-12">
+            <Badge>{"TODO 2."}</Badge> matches have been played so far.
+            <div className="flex items-center justify-center mt-2">
+              <CreateMatchTransaction key={resetKey} handleOnStatus={createMatchStatusUpdate} />
+            </div>
+          </div>
+          <div className="mt-8">
+            <div className="mb-32 justify-center items-center text-center flex flex-wrap">
+              {isLoading && <p>Loading matches...</p>}
+              {isError && <p>Error loading matches.</p>}
+              {getMatchList()}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }
