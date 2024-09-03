@@ -27,7 +27,7 @@ export default function Home() {
   } = useReadContract({
     address: contractAddress,
     abi: abi,
-    functionName: "",
+    functionName: "getIncompleteMatches",
     chainId: baseSepolia.id,
   });
 
@@ -35,7 +35,7 @@ export default function Home() {
     chainId: baseSepolia.id,
     address: contractAddress,
     abi,
-    functionName: "",
+    functionName: "totalMatches",
   });
 
   const createMatchStatusUpdate = (status) => {
@@ -107,13 +107,8 @@ export default function Home() {
             This NextJs template is setup to use <a href="https://ui.shadcn.com/">⚫️ shadcn/ui</a>, <a href="https://github.com/rainbow-me/rainbowkit">🌈 RainbowKit</a>, <a href="https://onchainkit.xyz/">🔵 OnchainKit</a> and <a href="https://wagmi.sh/">🟣🩵 wagmi.sh</a>. It also comes equipped with
             a light and dark mode toggle setup ☀️🌕 and read/write integration with smart contract, enjoy 🤝.
           </div>
-          <div className="max-w-4xl text-center opacity-80 pl-8 pr-8 pt-10 sm:text-xl text-s">
-            <Badge>TODO 1.</Badge> Connect smart contract address + abi.
-            <br />
-            Open <strong>todo.md</strong> for details.
-          </div>
           <div className="mt-12">
-            <Badge>{"TODO 2."}</Badge> matches have been played so far.
+            <Badge>{totalMatchesResult?.data?.toString()}</Badge> matches have been played so far.
             <div className="flex items-center justify-center mt-2">
               <CreateMatchTransaction key={resetKey} handleOnStatus={createMatchStatusUpdate} />
             </div>

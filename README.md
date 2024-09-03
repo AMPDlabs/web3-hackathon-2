@@ -5,7 +5,7 @@ Before we start there are a few things you need to do.
 
 ### Wallet setup
 * Create Coinbase Wallet - https://www.coinbase.com/wallet/articles/getting-started-extension#create-a-new-wallet
-* Fund wallet with Sepolia ETH from Faucet - https://www.alchemy.com/faucets/ethereum-sepolia
+* Fund wallet with Sepolia ETH from Faucet - https://www.alchemy.com/faucets/base-sepolia
 
 ### API Key
 * Obtain a Public API Key from the Coinbase Developer Platform APIs https://portal.cdp.coinbase.com/products/onchainkit

@@ -18,14 +18,14 @@ export default function CreateMatchTransaction(props: any) {
     {
       address: contractAddress,
       abi: abi,
-      functionName: "",
-      value: parseEther("0.001"),
+      functionName: "createMatch",
+      value: parseEther("0.0001"),
     },
   ];
 
   return address ? (
     <Transaction onStatus={handleOnStatus} chainId={baseSepolia.id} contracts={contracts}>
-      <TransactionButton text="Create Match TODO 3." />
+      <TransactionButton text="Create Match 🚀" />
       <TransactionStatusLabel />
       <TransactionToast>
         <TransactionToastIcon />

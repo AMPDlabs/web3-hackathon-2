@@ -12,7 +12,18 @@ export default function JoinMatchTransaction(match: { matchId: number; betAmount
   const handleOnStatus = useCallback(async (status: LifeCycleStatus) => {
     console.log("StatusUpdate", status);
     if (status.statusName === "success") {
-      // TODO 5.
+      const receipt = status.statusData.transactionReceipts[0];
+      console.log(receipt);
+      for (const log of receipt.logs) {
+        const decodedLog = decodeEventLog({
+          abi,
+          data: log.data,
+          topics: log.topics,
+        });
+        if (decodedLog.eventName === "CoinFlipped") {
+          console.log(`In match ${decodedLog.args?.matchId} Player${decodedLog.args?.result?.toString()} was the winner!`);
+        }
+      }
     }
   }, []);
 
@@ -21,7 +32,7 @@ export default function JoinMatchTransaction(match: { matchId: number; betAmount
     {
       address: contractAddress,
       abi: abi,
-      functionName: "",
+      functionName: "joinMatch",
       args: [match.matchId],
       value: match.betAmount,
     },
@@ -29,7 +40,7 @@ export default function JoinMatchTransaction(match: { matchId: number; betAmount
 
   return address ? (
     <Transaction className="w-full" onStatus={handleOnStatus} chainId={baseSepolia.id} contracts={contracts}>
-      <TransactionButton text="Join Match TODO 4." />
+      <TransactionButton text="Join Match 🔥" />
       <TransactionStatusLabel />
       <TransactionToast>
         <TransactionToastIcon />

@@ -20,4 +20,4 @@ Key words: Transaction, Wallet Sign, Smart contract, Write
 # 5. Read the event logs from the CoinFlip event to show who won the Coin Flip.
 
 Goal: Add a label in the Match card to show case the winner.
-Key words: Events, Emit Logs, Smart contract result, Success status
+Key words: Events, Emit Logs, Smart contract result, Success status.
